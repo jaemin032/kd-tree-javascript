@@ -9,7 +9,7 @@ In computer science, a [k-d tree](http://en.wikipedia.org/wiki/K-d_tree) (short 
 
 ### Demos
 
-* [Spiders](http://ubilabs.github.com/kd-tree-javascript/examples/basic/) - animated multiple nearest neighbour search
+* [Spiders](http://jaemin032.github.com/kd-tree-javascript/examples/basic/) - animated multiple nearest neighbour search
 
 ### Usage
 
