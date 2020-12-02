@@ -1,17 +1,15 @@
 # k-d Tree JavaScript Library
 
+Korean word map implementation of spiders (based on https://github.com/umdjs/umd/blob/master/commonjsStrict.js).
+
 A basic but super fast JavaScript implementation of the k-dimensional tree data structure.
 
-As of version 1.01, the library is defined as an UMD module (based on https://github.com/umdjs/umd/blob/master/commonjsStrict.js).
 
 In computer science, a [k-d tree](http://en.wikipedia.org/wiki/K-d_tree) (short for k-dimensional tree) is a space-partitioning data structure for organizing points in a k-dimensional space. k-d trees are a useful data structure for several applications, such as searches involving a multidimensional search key (e.g. range searches and nearest neighbor searches). k-d trees are a special case of binary space partitioning trees.
 
 ### Demos
 
 * [Spiders](http://ubilabs.github.com/kd-tree-javascript/examples/basic/) - animated multiple nearest neighbour search
-* [Google Map](http://ubilabs.github.com/kd-tree-javascript/examples/map/) - show nearest 20 out of 3000 markers on mouse move
-* [Colors](http://ubilabs.github.com/kd-tree-javascript/examples/colors/) - search color names based on color space distance
-* [Mutable](http://ubilabs.github.com/kd-tree-javascript/examples/mutable/) - dynamically add and remove nodes
 
 ### Usage
 
