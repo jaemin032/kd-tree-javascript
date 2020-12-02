@@ -1,4 +1,4 @@
-<html>
+`<html>
   <style>
     #canvas {
       border: 1px solid #000;
@@ -38,7 +38,9 @@
 
     <script src="../jquery-1.7.2.min.js"></script>
     <script src="../../kdTree.js"></script>
+    <script src="../../wordVectors.js" charset="UTF-8"></script>
     <script>
+
       var fps = 0, fpsSmoothing = 50, now, lastFrame = new Date;
       var ctx, canvas;
       var tree, points, balls, neighbors, useTree;
@@ -65,6 +67,7 @@
           ctx.strokeStyle = ball.color;
           ctx.beginPath();
           ctx.arc(ball.x, ball.y, 10, 0, Math.PI*2);
+          // ctx.fillText(ball.text, ball.x, ball.y);
           ctx.closePath();
           ctx.fill();
 
@@ -83,7 +86,8 @@
             ctx.closePath();
 
             ctx.beginPath();
-            ctx.arc(point.x, point.y, 4, 0, Math.PI*2);
+            ctx.fillText(point.text, point.x, point.y);
+            // ctx.arc(point.x, point.y, 4, 0, Math.PI*2);
             ctx.closePath();
             ctx.fill();
           }
@@ -122,20 +126,43 @@
         points = [];
         balls = [];
         for(var i=0; i<$("#points").val(); i++) {
-          var point = {x: Math.random()*canvas.width, y: Math.random()*canvas.height, id: i};
-          points.push(point);
+          if (i < wordVectorList.length) {
+            var point = {x: wordVectorList[i][1][0]*canvas.width,
+                         y: wordVectorList[i][1][1]*canvas.height,
+                         id: i,
+                         text: wordVectorList[i][0]};
+            points.push(point)
+          } else {
+            break;
+          }
+
+          // var point = {x: Math.random()*canvas.width, y: Math.random()*canvas.height, id: i};
+          // points.push(point);
         }
 
         for(var i=0; i<$("#balls").val(); i++) {
-          var ball = {
-            x: Math.random()*canvas.width,
-            y: Math.random()*canvas.height,
-            xSpeed: Math.random() - 0.5,
-            ySpeed: Math.random() - 0.5,
-            color: '#'+Math.floor(Math.random()*16777215).toString(16)
+
+          if (i < wordVectorList.length) {
+            var ball = {x: wordVectorList[i][1][0]*canvas.width,
+                        y: wordVectorList[i][1][1]*canvas.height,
+                        text: wordVectorList[i][0],
+                        xSpeed: (Math.random() - 0.5)/2,
+                        ySpeed: (Math.random() - 0.5)/2,
+                        color: '#'+Math.floor(Math.random()*16777215).toString(16)};
+            balls.push(ball)
+          } else {
+            break;
           }
-          balls.push(ball);
+          // var ball = {
+          //   x: Math.random()*canvas.width,
+          //   y: Math.random()*canvas.height,
+          //   xSpeed: Math.random() - 0.5,
+          //   ySpeed: Math.random() - 0.5,
+          //   color: '#'+Math.floor(Math.random()*16777215).toString(16)
+          // }
+          // balls.push(ball);
         }
+
         neighbors = $("#neighbors").val();
         useTree = $("#useTree").attr('checked') ? true : false;
         tree = new kdTree(points, distance, ["x", "y"]);
