@@ -1,6 +1,6 @@
-# k-d Tree JavaScript Library
+# Korean word map implementation of spiders
 
-Korean word map implementation of spiders (based on https://github.com/umdjs/umd/blob/master/commonjsStrict.js).
+Korean word map implementation of spiders (based on https://github.com/ubilabs/kd-tree-javascript).
 
 A basic but super fast JavaScript implementation of the k-dimensional tree data structure.
 
