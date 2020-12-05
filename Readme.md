@@ -1,98 +1,21 @@
-# k-d Tree JavaScript Library
-
-Korean word map implementation of spiders (based on https://github.com/umdjs/umd/blob/master/commonjsStrict.js).
-
-A basic but super fast JavaScript implementation of the k-dimensional tree data structure.
-
-
-In computer science, a [k-d tree](http://en.wikipedia.org/wiki/K-d_tree) (short for k-dimensional tree) is a space-partitioning data structure for organizing points in a k-dimensional space. k-d trees are a useful data structure for several applications, such as searches involving a multidimensional search key (e.g. range searches and nearest neighbor searches). k-d trees are a special case of binary space partitioning trees.
-
-### Demos
+# 챗봇의 Q&A데이터 시각화
 
 * [Spiders](http://jaemin032.github.io/kd-tree-javascript/examples/basic/) - animated multiple nearest neighbour search
 
-### Usage
+## 데이터
+챗봇의 Q&A데이터를(https://github.com/songys/Chatbot_data) 다운받아 읽어들이고 단어들을 추출한다.
 
-#### Using global exports
-When you include the kd-tree script via HTML, the global variables *kdTree* and *BinaryHeap* will be exported.
+## 좌표 변환
+단어들을 2차원 공간에서 시각화하기 위해서는 좌표값이 필요하다. 우선 단어들을 Fasttext(https://fasttext.cc/)를 활용하여 300개의 숫자로 이루어진 벡터값으로 변환할 수 있다. 
+ 300개를 직접적으로 사용할 수는 없으므로 차원축소 과정을 거쳐야만 한다. PCA를 활용하여 2차원의 벡터로 변환한다. Html의canvas에 표현할 예정이므로 차원 축소 과정을 거친 뒤에는 0과 1사이의 값으로 정규화한다.
 
-```js
-// Create a new tree from a list of points, a distance function, and a
-// list of dimensions.
-var tree = new kdTree(points, distance, dimensions);
+## 유사단어 시각화
 
-// Query the nearest *count* neighbours to a point, with an optional
-// maximal search distance.
-// Result is an array with *count* elements.
-// Each element is an array with two components: the searched point and
-// the distance to it.
-tree.nearest(point, count, [maxDistance]);
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
 
-// Insert a new point into the tree. Must be consistent with previous
-// contents.
-tree.insert(point);
+이제 javascript에서 kd-tree 라이브러리(https://github.com/ubilabs/kd-tree-javascript
+)를 활용하여 단어들을 시각화할 수 있다. 20개의 공이 각자 가장 가까운 점 5개를 추적하면서 빠르게 움직이고 있는데도 프레임 수가 300이상을 유지하는 것을 볼 수 있다. 이는 각 단어들의 좌표값이 kd-tree를 활용하여 보관하고 있고 neighbor들을 구하는데에 시간 복잡도가 낮기 때문에 가능한 일이다. 
 
-// Remove a point from the tree by reference.
-tree.remove(point);
 
-// Get an approximation of how unbalanced the tree is.
-// The higher this number, the worse query performance will be.
-// It indicates how many times worse it is than the optimal tree.
-// Minimum is 1. Unreliable for small trees.
-tree.balanceFactor();
-```
 
-#### Using RequireJS
-```js
-requirejs(['path/to/kdTree.js'], function (ubilabs) {
-	// Create a new tree from a list of points, a distance function, and a
-	// list of dimensions.
-	var tree = new ubilabs.kdTree(points, distance, dimensions);
 
-	// Query the nearest *count* neighbours to a point, with an optional
-	// maximal search distance.
-	// Result is an array with *count* elements.
-	// Each element is an array with two components: the searched point and
-	// the distance to it.
-	tree.nearest(point, count, [maxDistance]);
-
-	// Insert a new point into the tree. Must be consistent with previous
-	// contents.
-	tree.insert(point);
-
-	// Remove a point from the tree by reference.
-	tree.remove(point);
-
-	// Get an approximation of how unbalanced the tree is.
-	// The higher this number, the worse query performance will be.
-	// It indicates how many times worse it is than the optimal tree.
-	// Minimum is 1. Unreliable for small trees.
-	tree.balanceFactor();
-});
-```
-
-### Example
-
-```js
-var points = [
-  {x: 1, y: 2},
-  {x: 3, y: 4},
-  {x: 5, y: 6},
-  {x: 7, y: 8}
-];
-
-var distance = function(a, b){
-  return Math.pow(a.x - b.x, 2) +  Math.pow(a.y - b.y, 2);
-}
-
-var tree = new kdTree(points, distance, ["x", "y"]);
-
-var nearest = tree.nearest({ x: 5, y: 5 }, 2);
-
-console.log(nearest);
-```
-
-## About
-
-Developed at [Ubilabs](http://ubilabs.net).
-Released under the MIT Licence.
