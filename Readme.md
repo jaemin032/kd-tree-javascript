@@ -1,6 +1,6 @@
 # 챗봇의 Q&A데이터 시각화
 
-* [Spiders](http://jaemin032.github.io/kd-tree-javascript/examples/basic/) - animated multiple nearest neighbour search
+* [Demo](http://jaemin032.github.io/kd-tree-javascript/examples/basic/) - animated multiple nearest neighbour search
 
 ## 데이터
 챗봇의 Q&A데이터를(https://github.com/songys/Chatbot_data) 다운받아 읽어들이고 단어들을 추출한다.
