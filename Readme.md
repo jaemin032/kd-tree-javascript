@@ -11,7 +11,7 @@
 
 ## 유사단어 시각화
 
-![alt text](https://github.com/jaemin032/kd-tree-javascript/blob/master/word_visualization.png?raw=true)
+![alt text](https://github.com/jaemin032/kd-tree-javascript/blob/master/images/word_visualization.png?raw=true)
 
 
 이제 javascript에서 kd-tree 라이브러리(https://github.com/ubilabs/kd-tree-javascript
