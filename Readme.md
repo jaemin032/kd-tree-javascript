@@ -1,5 +1,7 @@
 # 챗봇의 Q&A데이터 시각화
 
+챗봇에서 사용되는 단어들을 kd-tree를 활용하여 시각화
+
 * [Demo](http://jaemin032.github.io/kd-tree-javascript/examples/basic/) - animated multiple nearest neighbour search
 
 ## 데이터
