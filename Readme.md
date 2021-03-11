@@ -2,7 +2,7 @@
 
 챗봇에서 사용되는 단어들을 kd-tree를 활용하여 시각화
 
-* [Demo](http://jaemin032.github.io/kd-tree-javascript/examples/basic/) - animated multiple nearest neighbour search
+* [Demo](http://jaemin032.github.io/kd-tree-javascript/examples/basic/) - 데모
 
 ## 데이터
 챗봇의 Q&A데이터를(https://github.com/songys/Chatbot_data) 다운 받아 읽어들이고 단어들을 추출한다.
